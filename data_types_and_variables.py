@@ -56,7 +56,7 @@ num_of_items = 3
 offer_expired = False
 premium_member = False
 
-can_buy = num_of_items > 2 and not offer_expired or premium_member
+can_buy = not offer_expired and (num_of_items > 2 or premium_member)
 
 """
 the password must be at least 5 characters
@@ -68,7 +68,8 @@ bonus neither the username or password can start or end with whitespace
 username = 'codeup'
 password = 'notastrongpassword'
 
-can_be_password = len(password) >= 5 and len(username) <= 20 and password != username
+can_be_password = len(password) >= 5 and password != username
+can_be_username = len(username) <= 20
 
 ######
 #bonus
@@ -77,7 +78,8 @@ def has_whitespace(string):
     if string[0] == ' ' or string[len(string) - 1] == ' ':
         return True
 
-can_be_password_bonus = can_be_password and not has_whitespace(username) and not has_whitespace(password)
+can_be_password_bonus = can_be_password and not has_whitespace(password)
+can_be_username = not has_whitespace(username) 
 
 #or
 can_be_username = not (username[0] == ' ' or username[len(username) - 1] == ' ')
