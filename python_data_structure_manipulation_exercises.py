@@ -336,7 +336,65 @@ print(avg_grades_ds) #~84.68
 
 
 #16 What is the average grade range (i.e. highest grade - lowest grade) for dark coffee drinkers?
+grades_dark_coffee_drinkers = []
+
+for student in students:
+    if student['coffee_preference'] == 'dark':
+        for i in range(0, len(student['grades'])):
+            grades_dark_coffee_drinkers.append(student['grades'][i])
+
+avg_grade_dark_coffee_drinkers = sum(grades_dark_coffee_drinkers) / len(grades_dark_coffee_drinkers)
+avg_grade_dark_coffee_drinkers #81.35
+
 #17 What is the average number of pets for medium coffee drinkers?
+num_pets_medium_coffee_drinkers = []
+
+for student in students:
+    if student['coffee_preference'] == 'medium':
+        num_pets_medium_coffee_drinkers.append(len(student['pets']))
+avg_num_pets_medium_coffee_drinkers = \
+    sum(num_pets_medium_coffee_drinkers) / len(num_pets_medium_coffee_drinkers)
+avg_num_pets_medium_coffee_drinkers # ~1.167
 #18 What is the most common type of pet for web development students?
+pets_webdev = []
+
+for student in students:
+    if student['course'] == 'web development':
+        for pet in student['pets']:
+            pets_webdev.append(pet['species'])
+unique_pets_webdev = set(pets_webdev)
+unique_pets
+pets_webdev_count = {}
+
+for pet in unique_pets_webdev:
+    count = 0
+    for p in pets_webdev:
+        if pet == p:
+            count += 1
+    pets_webdev_count[pet] = count
+
+print(pets_webdev)
+print(pets_webdev_count)
+
+most_common_pet_webdev = max(pets_webdev_count, key = pets_webdev_count.get)
+most_common_pet_webdev #horse
+
 #19 What is the average name length?
+name_length_list = []
+
+for student in students:
+    name_length_list.append(len(student['student']))
+avg_name_length = sum(name_length_list) / len(name_length_list)
+print(name_length_list)
+avg_name_length # ~13.64
+
 #20 What is the highest pet age for light coffee drinkers?
+pets_ages_for_medium_coffee_drinkers = []
+
+for student in students:
+    if student['coffee_preference'] == 'light':
+        for pet in student['pets']:
+            pets_ages_for_medium_coffee_drinkers.append(pet['age'])
+
+print(pets_ages_for_medium_coffee_drinkers)
+max(pets_ages_for_medium_coffee_drinkers) # 8
