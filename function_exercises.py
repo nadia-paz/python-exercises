@@ -99,7 +99,7 @@ def normalize_name(name):
     return name
 normalize_name('  %kuku  ')
 
-#11
+#11 Write a function named cumulative_sum that accepts a list of numbers and returns a list that is the cumulative sum of the numbers in the list.
 def cumulative_sum(list_numbers):
     list_sums = []
     sum_of_numbers = 0
