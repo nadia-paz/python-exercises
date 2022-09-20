@@ -24,7 +24,14 @@ if day_of_week == 'saturday' or day_of_week == 'sat' or day_of_week == 'sunday' 
         print("Weekend")
 else:
     print('Weekday')
+#### Class solution
+day_of_week = input('Enter the day of the week ').lower()
+if day_of_week in ['sunday', 'saturday', 'sun', 'sat']:
+     print("Weekend")
+else:
+    print('Weekday')
 
+#####################
 hrs_worked = 41
 hr_rate = 100
 pay_check = hrs_worked * hr_rate
@@ -32,6 +39,21 @@ pay_check = hrs_worked * hr_rate
 if hrs_worked > 40:
     pay_check *= 1.5   
 pay_check
+#### Class solution // correct one
+hours_worked = 40
+hourly_rate = 20
+
+if hours_worked <= 40:
+    paycheck = hours_worked * hourly_rate
+    print(f'The paycheck is {paycheck}')
+
+elif hours_worked > 40:
+    print('OVERTIME!')
+    ot_hours = (hours_worked - 40)
+    ot_rate = hourly_rate * 1.5
+
+    ot_paycheck = 40 * hourly_rate + ot_hours * ot_rate
+    print(f'The paycheck is {ot_paycheck}')
 
 """
 WHILE LOOPS
@@ -124,11 +146,39 @@ for n in range(0, number):
     if number == 0:
         break
 
+### class solution
+#!!!!! this type of loop promts user to enter a number and not breaks
+# even if user enters a string or negative number
+while True:
+    user_num = input('Enter a positive number: ')
+
+    if user_num.isdigit() == True:
+        print('This is a digit')
+        if int(user_num) > 0:
+            print('The number is positive')
+            break
+
+user_num = int(user_num)
+for i in range(user_num, 0, -1):
+    print(i)
+
 #2 breaks when reaches user's input
 for i in range(0, 1_000_000):
     print(i, end = ' ')
     if i == number:
         break
+### class solution
+while True:
+    user_num = input('Enter a positive number: ')
+
+    if user_num.isdigit():
+        print('This is a digit')
+        if int(user_num) > 0:
+            print('The number is positive')
+            break
+
+for i in range(int(user_num) + 1):
+    print(i, end = ' ')
 
 #3
 """
@@ -157,6 +207,23 @@ for i in range(1, 50, 2):
         continue
     print(f'Here is an odd number: {i}')
 
+### class solution
+while True:
+    #!!! in python variable lives outside the loop!!!
+    user_num = input("Enter an odd number between 1 and 50: ")
+    
+    if user_num.isdigit():
+        print('The number is digit')
+        if int(user_num) % 2 != 0 and int(user_num) in range(2, 50):
+            print('Odd number between 1 and 50')
+            break
+
+for i in range(1, 50, 2):
+    if i == int(user_num):
+        continue
+    print(i, end=' ')
+    
+
 # FIZZBUZZ
 for n in range(1, 101):
     if n % 15 == 0:
@@ -167,7 +234,18 @@ for n in range(1, 101):
         print('BUZZ')
     else:
         print(n)
-
+### class solution with continue
+for n in range(1, 101):
+    if n % 15 == 0:
+        print('FIZZBUZZ')
+        continue
+    if n % 3 == 0:
+        print('FIZZ')
+        continue
+    if n % 5 == 0:
+        print('BUZZ')
+        continue
+    print(n)
 #4
 """
 Display a table of powers.
@@ -202,6 +280,43 @@ if number >= 0:
 else:
     for i in range(number, abs(number) + 1):
         print ("{:<8} {:<10} {:<10}".format(i, i * i, i *i * i))
+
+#######
+# same but with table formatting
+number = int(input('What number would you like to go up to? '))
+
+print("{:<8}|{:<10}|{:<10}".format('number','squared','cubed'))
+print('________|__________|__________')
+
+if number >= 0:
+    for i in range(1, number + 1):
+        print ("{:<8}|{:<10}|{:<10}".format(i, i * i, i *i * i))
+else:
+    for i in range(number, abs(number) + 1):
+        print ("{:<8}|{:<10}|{:<10}".format(i, i * i, i *i * i))
+
+#update. added while loop
+keep_going = True
+
+while keep_going:
+    number = int(input('What number would you like to go up to? '))
+
+    print("{:<8}|{:<10}|{:<10}".format('number','squared','cubed'))
+    print('________|__________|__________')
+
+    if number >= 0:
+        for i in range(1, number + 1):
+            print ("{:<8}|{:<10}|{:<10}".format(i, i * i, i *i * i))
+    else:
+        for i in range(number, abs(number) + 1):
+            print ("{:<8}|{:<10}|{:<10}".format(i, i * i, i *i * i))
+    
+    answer = input('Continue? (y/n) ')
+    answer = answer.lower()
+    if answer == 'y' or answer == 'yes':
+        continue
+    else:
+         keep_going = False
 
 #5
 """
