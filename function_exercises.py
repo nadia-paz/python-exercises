@@ -113,3 +113,19 @@ def cumulative_sum(list_numbers):
     return list_sums
 
 cumulative_sum ([1, 2, 3, 4])
+
+# Bonus
+#1 Create a function named twelveto24. It should accept a string in the format 10:45am or 4:30pm 
+# and return a string that is the representation of the time in a 24-hour format.
+def twelveto24(time):
+    time = time.lower().replace('.', '')
+    if time[-2:] == 'am':
+        time = time[:-2]
+        if time[:2] == '12':
+            time = '00' + time[2:]
+    elif time[-2:] == 'pm':
+        time = time[:-2]
+        hour = int(time[:2]) + 12
+        time = str(hour) + time[2:]
+    return time
+twelveto24('10:45pm') 
