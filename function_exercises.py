@@ -94,10 +94,10 @@ def normalize_name(name):
     accepted_values = accepted_letters + numbers
     
     for letter in name:
-        if letter not in accepted_values:
-            name = name.replace(letter, '')
-        elif letter == ' ':
+        if letter == ' ':
             name = name.replace(letter, '_')
+        elif letter not in accepted_values:
+            name = name.replace(letter, '')
     return name
 normalize_name('  %kuku  ')
 
